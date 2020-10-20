@@ -1,9 +1,17 @@
 var mongoose = require("./connect");
 var USERSCHEMA = new mongoose.Schema({
+    foto: {
+        type: String,
+        required: [true, "la ruta de la canción es necesaria"]
+    },
+    relativepath: {
+        type: String
+    },
+    hash: {
+        type: String,
+        required: [true, "la ruta de la imagen es necesaria"]
+    },
     nombre: String,
-    ci: Number,
-    telefono: Number,
-    tipo: String,
     email: {
         type: String,
         required: [true, "El email es necesario"],
@@ -18,15 +26,7 @@ var USERSCHEMA = new mongoose.Schema({
     password: {
         type: String,
         required: [true, "El password es necesario"],
-    },
-    roles: {
-        type: Array,
-        default: []
-    },
-    fecha: {
-        type: Date,
-        default: new Date()
     }
 });
-var USER = mongoose.model("User", USERSCHEMA);
-module.exports = USER;
+var user = mongoose.model("User", USERSCHEMA);
+module.exports = user;
